@@ -4,40 +4,59 @@ const foodList = document.getElementById('foodList');
 
 let foods = [];
 
-function updateFoodsArray(inputValue) {
-  foods.push(inputValue);
-  // Save the updated list to localStorage
-  const currentList = Array.from(foodList.children).map(item => item.textContent);
-  localStorage.setItem('foodList', JSON.stringify(currentList));
-  foodInput.value = '';
-  displayFoodsArray(foods);
+window.addEventListener('load', loadFromLocalStorage);
+addButton.addEventListener('click', getFood);
+
+function loadFromLocalStorage() {
+  return JSON.parse(localStorage.getItem('foodItems'));
 }
 
-function displayFoodsArray(foods) {
-  foodList.innerHTML = "";
-  for(let i = 0; i < foods.length; i++){
-    const listItem = document.createElement('li');
-    listItem.textContent = foods[i];
-    foodList.appendChild(listItem);
-  }
+function saveToLocalStorage() {
+  localStorage.setItem('foodItems', JSON.stringify(foods));
 }
 
-// Load the list from localStorage on page load
-window.addEventListener('load', function() {
-    const savedList = JSON.parse(localStorage.getItem('foodList'));
-
-    if (savedList) {
-        displayFoodsArray(savedList);
-    }
-});
-
-// Add new item to the list and save to localStorage
-addButton.addEventListener('click', function() {
-  inputValue = foodInput.value.trim();
-  
+function getFood() {
+  const inputValue = foodInput.value.trim();
   if(inputValue !== '') {
-    updateFoodsArray(inputValue);
+    foods.push(inputValue);
+    //call saveToLocalStorage()
+    saveToLocalStorage();
+    foodInput.value = '';
   } else {
-    alert('Please type a food name!');
+    alert("please type your food!");
   }
-});          
+  update();
+}
+
+function removeFood() {
+
+  //call saveToLocalFood
+  saveToLocalStorage();
+}
+
+function editFood() {
+
+//call saveToLocalFood
+saveToLocalStorage();
+}
+
+function addIngredients() {
+
+  //call saveToLocalFood
+  saveToLocalStorage();
+}
+
+function display() {
+  for(let i = 0; i < foods.length; i++) {
+    const foodItem = document.createElement('li');
+    foodItem.textContent = foods[i];
+    foodList.appendChild(foodItem);
+  }
+}
+
+function update() {
+  //remove previous
+  document.querySelector('ul').innerHTML = '';
+  //call display()
+  display();
+}
