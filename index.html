@@ -4,7 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="styles.css">
+<title>weekly-food-planner</title>
 </head>
 <body>
+    <div class="container">
+        <div class="input-container">
+          <section class="title">The meal you would like to add to your list.</section>
+          <div class="row">
+            <label for="food"></label>
+            <input class="food-input" id="foodInput" type="text" placeholder="Your food name ">
+            <button class="food-button" id="addButton">Add</button>
+          </div>
+        </div>
+        <div class="food-list-container">
+            <ul class="food-list" id="foodList"></ul>
+        </div>
+    </div>
+    
     <script src="script.js" defer></script>
 </body>
