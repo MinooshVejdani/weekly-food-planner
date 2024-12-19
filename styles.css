@@ -48,7 +48,10 @@ body,html {
     margin-right: 5px; 
   }
   
-
+#foodContainer {
+  display: flex;
+  flex-direction: column;
+}
 
 
   /*.food-button{
@@ -61,14 +64,22 @@ body,html {
   .food-button:hover {
     background-color: rgb(251, 224, 214);
     cursor: pointer;
-  }
+  }*/
 
   .food-list-container {
-    display:block;
+    display:flex;
+    flex-direction: column;
     font-size: 16px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color:  rgb(227, 236, 224);
     margin-top: 1rem;
     border-radius: 5px;
     padding: 1rem;
-  }*/
+  }
+
+  .food-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+ 
